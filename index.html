@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete a Música</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #ff1493;
+    }
+    .lyrics {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .blank {
+      background: #ffeef8;
+      border: 1px solid #ccc;
+      padding: 4px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 2px;
+    }
+    select {
+      margin-left: 5px;
+    }
+    .button {
+      display: block;
+      margin: 20px auto;
+      background: #ff1493;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Complete a Música!</h1>
+  <div class="lyrics">
+    <p>I come home in the morning light<br>
+    My <select class="blank"><option value="">Escolha</option><option>mother</option><option>phone</option><option>boys</option></select> says, "When you gonna live your life right?"<br>
+    Oh, mother dear we're not the fortunate ones<br>
+    And girls, they wanna <select class="blank"><option value="">Escolha</option><option>fun</option><option>have</option><option>night</option></select> <select class="blank"><option value="">Escolha</option><option>fun</option><option>have</option><option>sun</option></select><br>
+    Oh, girls just want to have fun</p><p>The <select class="blank"><option value="">Escolha</option><option>phone</option><option>night</option><option>sun</option></select> rings in the middle of the <select class="blank"><option value="">Escolha</option><option>night</option><option>mother</option><option>boys</option></select><br>
+My father yells, "What you gonna do with your life?"<br>
+Oh, daddy dear, you know you're still <select class="blank"><option value="">Escolha</option><option>number</option><option>beautiful</option><option>working</option></select> one<br>
+But girls, they wanna have fun</p>
+
+<p>Some <select class="blank"><option value="">Escolha</option><option>boys</option><option>sun</option><option>fun</option></select> take a <select class="blank"><option value="">Escolha</option><option>beautiful</option><option>mother</option><option>working</option></select> girl<br>
+And hide her away from the rest of the world<br>
+I want to be the one to walk in the <select class="blank"><option value="">Escolha</option><option>sun</option><option>fun</option><option>night</option></select><br>
+Oh, girls, they wanna have fun</p>
+
+<button class="button" onclick="checkAnswers()">Enviar</button>
+<div class="result" id="result"></div>
+
+  </div>  <script>
+    const correctAnswers = [
+      "mother", "have", "fun",
+      "phone", "night", "number",
+      "boys", "beautiful", "sun"
+    ];
+
+    function checkAnswers() {
+      const selects = document.querySelectorAll(".blank");
+      let correct = 0;
+      selects.forEach((select, i) => {
+        if (select.value === correctAnswers[i]) {
+          correct++;
+          select.style.borderColor = "#32cd32";
+        } else {
+          select.style.borderColor = "#dc143c";
+        }
+      });
+      document.getElementById("result").textContent = `Você acertou ${correct} de ${correctAnswers.length} palavras!`;
+    }
+  </script></body>
+</html>
